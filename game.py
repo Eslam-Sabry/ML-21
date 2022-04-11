@@ -91,6 +91,9 @@ player1 = Player('player1',cards,True)
 #player2 = Player('player2',cards,False)
 player2 = Stupid_AI('stupid AI',cards,False)
 
+print(f'{player1.name} hand {player1.hand}')
+print(f'{player2.name} hand {player2.hand}')
+print('########################################')
 
 while player1.response or player2.response:
     player1.play()
@@ -101,14 +104,14 @@ while player1.response or player2.response:
 
 
 
-print(f'{player1.name} hand is {player1.initial_value} + {player1.hand} and the totoal is {player1.hand_value}')
-print(f'{player2.name} hand is {player2.initial_value} + {player2.hand} and the totoal is {player2.hand_value}')
+print(f'{player1.name} hand is {player1.initial_value} + {player1.hand} and the total is {player1.hand_value}')
+print(f'{player2.name} hand is {player2.initial_value} + {player2.hand} and the total is {player2.hand_value}')
 
 
 if (player1.hand_value > player2.hand_value and player1.hand_value <= max_value) or player2.hand_value > max_value:
-    print('player1 wins!')
+    print(f'{player1.name} wins!')
 
 elif (player2.hand_value > player1.hand_value and player2.hand_value <= max_value) or player1.hand_value > max_value:
-    print('player2 wins!')
+    print(f'{player2.name} wins!')
 else:
     print('draw!')
