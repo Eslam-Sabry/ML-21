@@ -72,17 +72,37 @@ class Player:
             self.is_player_turn = True
 
 
+class Stupid_AI(Player):
+    def play(self):
+        if self.is_player_turn:
+            if self.hand_value < 17:
+                self.response = True
+                self.update_hand()
+                print(f'AI hand {self.hand}')
+            else:
+                self.response = False
+
+            self.is_player_turn = False
+        else:
+            self.is_player_turn = True
+
 
 player1 = Player('player1',cards,True)
-player2 = Player('player2',cards,False)
+#player2 = Player('player2',cards,False)
+player2 = Stupid_AI('stupid AI',cards,False)
 
 
 while player1.response or player2.response:
-    if player1.hand_value > max_value or player2.hand_value > max_value:
-        break
     player1.play()
     player2.play()
+    print('########################################')
+    if player1.hand_value > max_value or player2.hand_value > max_value:
+        break
 
+
+
+print(f'{player1.name} hand is {player1.initial_value} + {player1.hand} and the totoal is {player1.hand_value}')
+print(f'{player2.name} hand is {player2.initial_value} + {player2.hand} and the totoal is {player2.hand_value}')
 
 
 if (player1.hand_value > player2.hand_value and player1.hand_value <= max_value) or player2.hand_value > max_value:
